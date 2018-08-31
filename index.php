@@ -27,18 +27,18 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
   /*initialize curl*/
   $ch = curl_init($url);
   /*prepare response*/
-  $jsonData = '{
-    "recipient" : {
-      "id" : "' . $sender . '"
-    },
-    "message" : {
-      "text" : "OK"
-    }
-  }';
+  $resp = array(
+    'recipient' => array(
+      'id' => $sender
+    ),
+    'message' => array(
+      'text' => "Your message is ' . $input['entry'][0]['messaging'][0]['message']['text'] . '"
+    )
+  );
   
   /* curl setting to send a json post data */
   curl_setopt($ch, CURLOPT_POST, 1);
-  curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($resp));
   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
   if (!empty($message)) {
     $result = curl_exec($ch); // user will get the message
