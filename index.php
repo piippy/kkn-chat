@@ -39,7 +39,7 @@ $logics = array(
     "matchers" => array(
       array("type" => "exact", "value" => "สอบถามค่าบริการจัดส่ง")
     ),
-    'resp' => (array('text' => $conversation['logistic'])
+    'resp' => array('text' => $conversation['logistic'])
   ),
   array(
     "matchers" => array(
@@ -50,7 +50,7 @@ $logics = array(
       'attachment' => array(
         'type' => 'image',
         'payload' => array(
-          'url' => 'https://scontent.fbkk2-6.fna.fbcdn.net/v/t1.15752-0/p480x480/40545218_2108115272770277_6181129212267593728_n.jpg?_nc_cat=0&oh=60cc012ab59485274c48e66c3d0e62da&oe=5C33C299',
+          'url' => 'https://kkn-chat.herokuapp.com/img/td.mix.png',
           'is_reusable' => true
         )
       )
