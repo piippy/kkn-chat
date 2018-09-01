@@ -32,10 +32,10 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
       'id' => $sender
     ),
     'message' => array(
-      'text' => "Your message is ' . $input['entry'][0]['messaging'][0]['message']['text'] . '"
+      'text' => "Your message is {$input['entry'][0]['messaging'][0]['message']['text']}."
     )
   );
-  
+
   /* curl setting to send a json post data */
   curl_setopt($ch, CURLOPT_POST, 1);
   curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($resp));
