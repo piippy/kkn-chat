@@ -52,15 +52,7 @@ function match_response($input) {
       }
     }
   }
-  return
-  'ค่าบริการการจัดส่ง สั่งกี่คู่ราคาส่งก็เท่ากันครับ
-
-  ลงทะเบียนธรรมดา - 20บาท
-  EMS - 60บาท
-  Kerry - 80บาท
-  Kerry เก็บเงินปลายทาง - 100บาท
-
-  ค่าจัดส่งจะเป็นตามนี้ครับผม';
+  return "Your message is $input.";
 }
 
 /* receive and send messages */
@@ -77,7 +69,8 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
       'id' => $sender
     ),
     'message' => array(
-      'text' => match_response($input['entry'][0]['messaging'][0]['message']['text'])
+      // 'text' => match_response($input['entry'][0]['messaging'][0]['message']['text'])
+      'text' => json_encode($input)
     )
   );
 
