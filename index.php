@@ -20,7 +20,7 @@ fclose($file);
 /* conversation logic */
 $logics = array(
   array(
-    matchers => array(
+    "matchers" => array(
       "type" => "exact",
       "value" => "สอบถามค่าบริการจัดส่ง"
     ),
