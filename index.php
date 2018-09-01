@@ -42,7 +42,7 @@ function match_response($input) {
       $matcher = $logics[$i]['matchers'][$j];
       switch ($matcher['type']) {
         case 'exact':
-          if ($matcher['value'] == $input['entry'][0]['messaging'][0]['message']['text'])
+          if ($matcher['value'] == $input)
             return $logics[$i]['return'];
           break;
 
@@ -52,7 +52,7 @@ function match_response($input) {
       }
     }
   }
-  return "Your message is {$input['entry'][0]['messaging'][0]['message']['text']}.";
+  return "Your message is $input.";
 }
 
 /* receive and send messages */
