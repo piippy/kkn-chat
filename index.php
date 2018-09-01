@@ -52,7 +52,15 @@ function match_response($input) {
       }
     }
   }
-  return "Your message is $input.";
+  return
+  'ค่าบริการการจัดส่ง สั่งกี่คู่ราคาส่งก็เท่ากันครับ
+
+  ลงทะเบียนธรรมดา - 20บาท
+  EMS - 60บาท
+  Kerry - 80บาท
+  Kerry เก็บเงินปลายทาง - 100บาท
+
+  ค่าจัดส่งจะเป็นตามนี้ครับผม';
 }
 
 /* receive and send messages */
