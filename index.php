@@ -123,7 +123,7 @@ foreach ($input['entry'] as $entry) {
       $output = array(
         'messaging_type' => 'RESPONSE',
         'recipient' => array('id' => $sender),
-        'message' = $response
+        'message' => $response
       );
 
       /* curl setting to send a json post data */
