@@ -68,15 +68,15 @@ foreach ($input['entry'] as $entry) {
     $text = $messaging['message']['text'];
 
     /*prepare response*/
-    $msg = get_response($text);
-    if (!$msg)
-      continue;
+    // $msg = get_response($text);
+    // if (!$msg)
+    //   continue;
 
     /* curl setting to send a json post data */
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array(
       'recipient' => array('id' => $sender),
-      'message' => array('text' => $msg)
+      'message' => array('text' => $text)
     )));
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
     $result = curl_exec($ch); // user will get the message
