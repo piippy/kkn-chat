@@ -86,10 +86,7 @@ $logics = array(
   )
 );
 
-function get_responses($text, $sender) {
-  if (!$sender)
-    return;
-
+function get_responses($text) {
   global $logics;
   foreach ($logics as $logic) {
     foreach ($logic['matchers'] as $matcher) {
