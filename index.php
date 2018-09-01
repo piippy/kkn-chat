@@ -37,6 +37,7 @@ Kerry เก็บเงินปลายทาง - 100บาท
 );
 
 function get_response($text) {
+  global $logics;
   $msg = ":);text:$text;";
   foreach ($logics as $logic) {
     foreach ($logic['matchers'] as $matcher) {
