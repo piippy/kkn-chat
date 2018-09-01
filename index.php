@@ -21,8 +21,7 @@ fclose($file);
 $logics = array(
   array(
     "matchers" => array(
-      "type" => "exact",
-      "value" => "สอบถามค่าบริการจัดส่ง"
+      array("type" => "exact", "value" => "สอบถามค่าบริการจัดส่ง")
     ),
     "return" =>
 "ค่าบริการการจัดส่ง สั่งกี่คู่ราคาส่งก็เท่ากันครับ
