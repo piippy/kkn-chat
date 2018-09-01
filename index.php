@@ -93,10 +93,10 @@ function get_responses($text) {
       switch ($matcher['type']) {
         case 'exact':
           if ($matcher['value'] == $text)
-            return array(array(
-              'text' => "text:$text;matcher:{$matcher['value']}"
-            ));
-            // return $logic['responses'];
+            // return array(array(
+            //   'text' => "text:$text;matcher:{$matcher['value']}"
+            // ));
+            return $logic['responses'];
           break;
       }
     }
