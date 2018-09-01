@@ -90,14 +90,15 @@ foreach ($input['entry'] as $entry) {
     $text = $messaging['message']['text'];
 
     /*prepare response*/
-    $resp = get_resp($text);
-    if (!$sender || !$resp)
-      continue;
+    // $resp = get_resp($text);
+    // if (!$sender || !$resp)
+    //   continue;
 
     $output = array(
       'messaging_type' => 'RESPONSE',
       'recipient' => array('id' => $sender),
-      'message' => $resp
+      // 'message' => $resp
+      'message' => array('text' => $text)
     );
 
     /* curl setting to send a json post data */
