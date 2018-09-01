@@ -46,7 +46,7 @@ $logics = array(
       array("type" => "exact", "value" => "สอบถามชุดธุดงค์")
     ),
     "resp" => array(
-      'text' => $conversation['Thudong']
+      'text' => $conversation['Thudong'],
       'attachment' => array(
         'type' => 'image',
         'payload' => array(
