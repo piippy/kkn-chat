@@ -11,7 +11,7 @@ $LOGICS = array(
     )
   ),
   array(
-    'matcher' => array(
+    'matchers' => array(
       array("type" => "regex", "value" => "/ปลายทาง.*(มั้ย|ไหม|ป่ะ|นะ)/")
     ),
     'return' => array(
