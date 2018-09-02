@@ -18,29 +18,34 @@ $file = fopen("logs.txt","w");
 fwrite($file, file_get_contents('php://input'));
 fclose($file);
 
-
-/*initialize curl*/
+/*initialize curl setting to send a json post data*/
 $ch = curl_init("https://graph.facebook.com/v2.6/me/messages?access_token=$access_token");
+function bot_answer($resp, $sender) {
+  global $ch;
+  curl_setopt($ch, CURLOPT_POST, 1);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array(
+    'recipient' => array('id' => $sender),
+    'message' => $resp
+  )));
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+  $result = curl_exec($ch); // user will get the message
+}
 
 /* receive and send messages */
 $input = json_decode(file_get_contents('php://input'), true);
+
 foreach ($input['entry'] as $entry) {
   foreach ($entry['messaging'] as $messaging) {
     $sender = $messaging['sender']['id'];
-    $text = $messaging['message']['text'];
+    if (empty($sender))
+      continue;
+    bot_answer(array('text'=>$sender), $sender);
+    bot_answer(array('text'=>$messaging['message']['text']), $sender);
 
-    /*prepare response*/
-    // $msg = get_response($text);
-    // if (!$msg)
+    // $responses = get_responses($messaging['message']['text']);
+    // if (empty($responses))
     //   continue;
-
-    /* curl setting to send a json post data */
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array(
-      'recipient' => array('id' => $sender),
-      'message' => array('text' => $text)
-    )));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-    $result = curl_exec($ch); // user will get the message
+    // foreach($responses as $resp)
+    //   bot_answer($resp, $sender);
   }
 }
