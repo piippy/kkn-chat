@@ -30,7 +30,16 @@ $LOGICS = array(
           "url" => "https://kkn-chat.herokuapp.com/img/td.mix.png",
           "is_reusable" => true
         )
-      ))
+      )),
+      array(
+        "text" => ":) สนใจแบบไหนอยู่ครับ",
+        "quick_replies" => array(
+          array("content_type" => "text", "title" => "แบบที่ 1", "payload" => "TD205"),
+          array("content_type" => "text", "title" => "แบบที่ 2", "payload" => "TD206"),
+          array("content_type" => "text", "title" => "แบบที่ 3", "payload" => "TD207"),
+          array("content_type" => "text", "title" => "แบบที่ 4", "payload" => "TD208")
+        )
+      )
     )
   ),
   array(
