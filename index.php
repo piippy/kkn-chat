@@ -47,5 +47,6 @@ foreach ($input['entry'] as $entry) {
       continue;
     foreach($responses as $resp)
       bot_answer($resp, $sender);
+    bot_answer(array('text'=>json_encode($messaging)),$sender);
   }
 }
