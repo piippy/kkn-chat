@@ -37,12 +37,11 @@ $input = json_decode(file_get_contents('php://input'), true);
 $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
 $text = $input['entry'][0]['messaging'][0]['message']['text'];
 
-$sender = $messaging['sender']['id'];
-if (empty($sender))
-  continue;
-$responses = get_responses($text);
-if (empty($responses))
-  bot_answer(array('text' => $text), $sender);
-else
-  foreach($responses as $resp)
-    bot_answer($resp, $sender);
+if (isset($sender)) {
+  $responses = get_responses($text);
+  if (empty($responses))
+    bot_answer(array('text' => $text), $sender);
+  else
+    foreach($responses as $resp)
+      bot_answer($resp, $sender);
+}
