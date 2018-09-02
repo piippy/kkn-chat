@@ -88,9 +88,9 @@ $resp = array(
 );
 
 function concat_payloadToResp($payload, $responses) {
-  foreach (&$responses as $response)
+  foreach ($responses as &$response)
     if (isset($response['quick_replies']))
-      foreach (&$response['quick_replies'] as $reply)
+      foreach ($response['quick_replies'] as &$reply)
         $reply['payload'] = $payload . $replay['payload'];
   return $responses;
 }
