@@ -39,7 +39,10 @@ foreach ($input['entry'] as $entry) {
     $sender = $messaging['sender']['id'];
     if (empty($sender))
       continue;
-    $responses = get_responses($messaging['message']['text']);
+    if (empty($messaging['quick_reply']['payload']))
+      $responses = get_responses('init');
+    else
+      $responses = get_responses($messaging['message']['quick_reply']['payload']);
     if (empty($responses))
       continue;
     foreach($responses as $resp)
