@@ -34,14 +34,18 @@ function bot_answer($resp, $sender) {
 /* receive and send messages */
 $input = json_decode(file_get_contents('php://input'), true);
 
-$sender = $input['entry'][0]['messaging'][0]['sender']['id'];
-$text = $input['entry'][0]['messaging'][0]['message']['text'];
+foreach ($input['entry'] as $entry) {
+  foreach ($entry['messaging'] as $messaging) {
+    $sender = $messaging['sender']['id'];
+    if (empty($sender))
+      continue;
+    bot_answer(array('text'=>$sender), $sender);
+    bot_answer(array('text'=>$messaging['message']['text']), $sender);
 
-if (isset($sender)) {
-  $responses = get_responses($text);
-  if (empty($responses))
-    bot_answer(array('text' => $text), $sender);
-  else
-    foreach($responses as $resp)
-      bot_answer($resp, $sender);
+    // $responses = get_responses($messaging['message']['text']);
+    // if (empty($responses))
+    //   continue;
+    // foreach($responses as $resp)
+    //   bot_answer($resp, $sender);
+  }
 }
