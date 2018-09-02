@@ -17,7 +17,7 @@ $LOGICS = array(
     'return' => array(
       array('text' => $CONVERSATION['COD'])
     )
-  )
+  ),
   array(
     "matchers" => array(
       array("type" => "exact", "value" => "สอบถามชุดธุดงค์")
