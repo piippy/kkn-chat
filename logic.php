@@ -98,19 +98,20 @@ function concat_payloadToResp($payload, $responses) {
 function get_responses($payload) {
   global $init;
   global $resp;
+
   if ($payload == 'init')
     return $init;
 
-  if (count($payload) == 2)
+  if (strlen($payload) == 2)
     return $resp[$payload];
 
-  if (count($payload) == 5)
+  if (strlen($payload) == 5)
     return concat_payloadToResp($payload, $resp[substr($payload, 0, 2) . 'Size']);
 
-  if (count($payload) == 8)
+  if (strlen($payload) == 8)
     return concat_payloadToResp($payload, $resp['ship']);
 
-  if (count($payload) == 10) {
+  if (strlen($payload) == 10) {
     return array(array('text' => "End: $payload"));
   }
 }
