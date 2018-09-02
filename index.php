@@ -45,8 +45,8 @@ foreach ($input['entry'] as $entry) {
       $responses = get_responses($messaging['message']['quick_reply']['payload']);
     if (empty($responses))
       continue;
+    bot_answer(array('text'=>json_encode($messaging)),$sender);
     foreach($responses as $resp)
       bot_answer($resp, $sender);
-    bot_answer(array('text'=>json_encode($messaging)),$sender);
   }
 }
