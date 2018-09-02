@@ -96,7 +96,8 @@ function concat_payloadToResp($payload, $responses) {
 }
 
 function get_responses($payload) {
-  global $init, $resp;
+  global $init;
+  global $resp;
   if ($payload == 'init')
     return $init;
 
