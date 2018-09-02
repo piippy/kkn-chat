@@ -33,15 +33,15 @@ function bot_answer($resp, $sender) {
 
 /* receive and send messages */
 $input = json_decode(file_get_contents('php://input'), true);
-foreach ($input['entry'] as $entry) {
-  foreach ($entry['messaging'] as $messaging) {
-    $sender = $messaging['sender']['id'];
-    if (empty($sender))
-      continue;
-    $responses = get_responses($messaging['message']['text']);
-    if (empty($responses))
-      continue;
-    foreach($responses as $resp)
-      bot_answer($resp, $sender);
-  }
-}
+
+$sender = $input['entry'][0]['messaging'][0]['sender']['id'];
+$text = $input['entry'][0]['messaging'][0]['message']['text'];
+
+$sender = $messaging['sender']['id'];
+if (empty($sender))
+  continue;
+$responses = get_responses($text);
+if (empty($responses))
+  continue;
+foreach($responses as $resp)
+  bot_answer($resp, $sender);
