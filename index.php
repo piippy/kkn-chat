@@ -1,7 +1,8 @@
 <?php
-$access_token = 'EAAhGuNGZCkpcBAAscieTogeVpy36sjq9j2S5bjHXj60NeZBrJfvoOEMGIazbN78av0x2DVXASHRUhHW025gUwOwprWdZCZAprZA7j4ajtzZCggIRuBQr3CBy8b26x1VWZBewcIJZCsVQU9uM1swugx853TEpie5KHpciqqGmERqOWQZDZD';
+require_once "logic.php";
 
 /* validate verify token needed for setting up web hook */
+$access_token = 'EAAma1qnSTo0BAFBoFIZBUQDczPxZAj8ho34AcGhH6abqwAKelg4yCRKQZBRgyNBnnRJs23kRVvFVJiMOAhdBpYkX2yMHZCZB2HHTIu6daxtQ7dvNcUZB7yRmgTHpfqacpIMdNbvH7wkCOueAm9JWfr5O86dxW7dN9JRoa9q5Ws1QZDZD';
 if (isset($_GET['hub_verify_token'])) {
   if ($_GET['hub_verify_token'] === $access_token) {
     echo $_GET['hub_challenge'];
@@ -16,29 +17,6 @@ if (isset($_GET['hub_verify_token'])) {
 $file = fopen("logs.txt","w");
 fwrite($file, file_get_contents('php://input'));
 fclose($file);
-
-/* conversation logic */
-$logics = array(
-  array(
-    "matchers" => array(
-      array("type" => "exact", "value" => "สอบถามค่าบริการจัดส่ง")
-    ),
-    "return" =>
-"ค่าบริการการจัดส่ง สั่งกี่คู่ราคาส่งก็เท่ากันครับ
-
-จัดส่งด้วย ไปรษณีย์ แบบEMS(โอนเงิน): 60บาท
-จัดส่งด้วย Kerry แบบเก็บเงินปลายทาง: 100บาท
-
-ค่าจัดส่งจะเป็นตามนี้ครับผม"
-  ),
-  array(
-    "matchers" => array(
-      array("type" => "exact", "value" => "ธุดงค์")
-    ),
-    "return" =>
-""
-  )
-);
 
 function get_response($text) {
   global $logics;
