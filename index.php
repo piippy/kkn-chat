@@ -40,8 +40,8 @@ foreach ($input['entry'] as $entry) {
     if (empty($sender))
       continue;
     $responses = get_responses($messaging['message']['text']);
-    if (empty($responses))
-      continue;
+    // if (empty($responses))
+    //   continue;
     // foreach($responses as $resp)
     //   bot_answer($resp, $sender);
     bot_answer(array('text'=>json_encode($responses)), $sender);
