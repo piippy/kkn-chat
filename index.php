@@ -39,13 +39,10 @@ foreach ($input['entry'] as $entry) {
     $sender = $messaging['sender']['id'];
     if (empty($sender))
       continue;
-    bot_answer(array('text'=>$sender), $sender);
-    bot_answer(array('text'=>$messaging['message']['text']), $sender);
-
-    // $responses = get_responses($messaging['message']['text']);
-    // if (empty($responses))
-    //   continue;
-    // foreach($responses as $resp)
-    //   bot_answer($resp, $sender);
+    $responses = get_responses($messaging['message']['text']);
+    if (empty($responses))
+      continue;
+    foreach($responses as $resp)
+      bot_answer($resp, $sender);
   }
 }
