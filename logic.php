@@ -49,3 +49,16 @@ $LOGICS = array(
     )
   )
 );
+
+function get_responses($text) {
+  global $LOGICS;
+  foreach ($LOGICS as $logic) {
+    foreach ($logic['matchers'] as $matcher) {
+      if (
+        ($matcher['type'] == 'exact' && $text == $matcher['value']) ||
+        ($matcher['type'] == 'regex' && preg_match($matcher['value'], $text))
+      )
+        return $logic['return'];
+    }
+  }
+}
