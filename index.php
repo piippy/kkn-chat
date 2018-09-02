@@ -42,6 +42,7 @@ if (empty($sender))
   continue;
 $responses = get_responses($text);
 if (empty($responses))
-  continue;
-foreach($responses as $resp)
-  bot_answer($resp, $sender);
+  bot_answer(array('text' => $text), $sender);
+else
+  foreach($responses as $resp)
+    bot_answer($resp, $sender);
