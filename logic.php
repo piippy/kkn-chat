@@ -84,12 +84,6 @@ $resp = array(
         array("content_type" => "text", "title" => "ไปรษณีย์ ธรรมดา", "payload" => "$4")
       )
     )
-  ),
-  'promotion1' => array(
-    array('text' => "")
-  ),
-  'summary' => array(
-    array('text' => )
   )
 );
 $term = array(
