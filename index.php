@@ -43,7 +43,7 @@ foreach ($input['entry'] as $entry) {
       $responses = get_responses('init');
     else
       $responses = get_responses($messaging['message']['quick_reply']['payload']);
-    bot_answer(array('text'=>json_encode($messaging)),$sender);
+    // bot_answer(array('text'=>json_encode($messaging)),$sender);
     if (empty($responses))
       continue;
     foreach($responses as $resp)
