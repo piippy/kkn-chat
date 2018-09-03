@@ -39,7 +39,7 @@ foreach ($input['entry'] as $entry) {
     $sender = $messaging['sender']['id'];
     if (empty($sender))
       continue;
-    if (empty($messaging['message']['quick_reply']['payload']))
+    if (empty($messaging['message']['quick_reply']['payload']) && $messaging['message']['text'] == 'สั่งรองเท้า')
       $responses = get_responses('init');
     else
       $responses = get_responses($messaging['message']['quick_reply']['payload']);
