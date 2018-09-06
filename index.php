@@ -43,11 +43,13 @@ foreach ($input['entry'] as $entry) {
     if (in_array($messaging['message']['text'], array('สั่งรองเท้า', 'เริ่มต้น')))
       $responses = get_responses('init');
 
-    if ($messaging['message']['text'] == 'สอบถามรองเท้าชุดอื่น')
+    if ($messaging['message']['text'] == 'สอบถามรองเท้าชุดอื่น'){
+      bot_answer(array('text' => json_encode(array('bool'=>$messaging['message']['text'] == 'สอบถามรองเท้าชุดอื่น'))), $sender);
       $responses = get_responses('Meesuk');
-
-    if ($messaging['message']['text'] == 'สอบถามค่าบริการจัดส่ง')
-      $responses = get_responses('shipping');
+    }
+    if ($messaging['message']['text'] == 'สอบถามค่าบริการจัดส่ง'){
+    bot_answer(array('text' => json_encode(array('bool'=>$messaging['message']['text'] == 'สอบถามรองเท้าชุดอื่น'))), $sender);
+      $responses = get_responses('shipping');}
 
     if (isset($messaging['message']['quick_reply']['payload']))
       $responses = get_responses($messaging['message']['quick_reply']['payload']);
