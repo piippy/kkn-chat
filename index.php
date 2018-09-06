@@ -44,11 +44,13 @@ foreach ($input['entry'] as $entry) {
       $responses = get_responses('init');
 
     if ($messaging['message']['text'] == 'สอบถามรองเท้าชุดอื่น'){
-      bot_answer(array('text' => json_encode(array('bool'=>$messaging['message']['text'] == 'สอบถามรองเท้าชุดอื่น'))), $sender);
+      bot_answer(array('text' => json_encode(array('bool'=>$messaging['message']['text'] == 'สอบถามรองเท้าชุดอื่น',
+    'resp'=> get_responses('Meesuk')))), $sender);
       $responses = get_responses('Meesuk');
     }
     if ($messaging['message']['text'] == 'สอบถามค่าบริการจัดส่ง'){
-    bot_answer(array('text' => json_encode(array('bool'=>$messaging['message']['text'] == 'สอบถามรองเท้าชุดอื่น'))), $sender);
+    bot_answer(array('text' => json_encode(array('bool'=>$messaging['message']['text'] == 'สอบถามค่าบริการจัดส่ง'
+  ,'resp'=>get_responses('shipping')))), $sender);
       $responses = get_responses('shipping');}
 
     if (isset($messaging['message']['quick_reply']['payload']))
