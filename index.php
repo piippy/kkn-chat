@@ -39,10 +39,19 @@ foreach ($input['entry'] as $entry) {
     $sender = $messaging['sender']['id'];
     if (empty($sender))
       continue;
-    if (empty($messaging['message']['quick_reply']['payload']) && $messaging['message']['text'] == 'สั่งรองเท้า')
+
+    if (in_array($messaging['message']['text'], array('สั่งรองเท้า', 'เริ่มต้น')))
       $responses = get_responses('init');
-    else
+
+    if (in_array($messaging['message']['text'], array('สอบถามรองเท้าชุดอื่น')))
+      $responses = get_responses('Meesuk');
+
+    if (in_array($messaging['message']['text'], array('สอบถามค่าบริการจัดส่ง')))
+      $responses = get_responses('shipping');
+
+    if (isset($messaging['message']['quick_reply']['payload']))
       $responses = get_responses($messaging['message']['quick_reply']['payload']);
+
     // bot_answer(array('text'=>json_encode($messaging)),$sender);
     if (empty($responses))
       continue;
