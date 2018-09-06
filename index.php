@@ -43,20 +43,16 @@ foreach ($input['entry'] as $entry) {
     if (in_array($messaging['message']['text'], array('สั่งรองเท้า', 'เริ่มต้น')))
       $responses = get_responses('init');
 
-    if ($messaging['message']['text'] == 'สอบถามรองเท้าชุดอื่น'){
-      bot_answer(array('text' => json_encode(array('bool'=>$messaging['message']['text'] == 'สอบถามรองเท้าชุดอื่น',
-    'resp'=> get_responses('Meesuk')))), $sender);
+    if (in_array($messaging['message']['text'], array('สอบถามรองเท้าชุดอื่น')))
       $responses = get_responses('Meesuk');
-    }
-    if ($messaging['message']['text'] == 'สอบถามค่าบริการจัดส่ง'){
-    bot_answer(array('text' => json_encode(array('bool'=>$messaging['message']['text'] == 'สอบถามค่าบริการจัดส่ง'
-  ,'resp'=>get_responses('shipping')))), $sender);
-      $responses = get_responses('shipping');}
 
-    if (isset($messaging['message']['quick_reply']['payload']))
-      $responses = get_responses($messaging['message']['quick_reply']['payload']);
+    if (in_array($messaging['message']['text'], array('สอบถามค่าบริการจัดส่ง', 'ค่าส่ง')))
+      $responses = get_responses('shipping');
 
-    bot_answer(array('text' => json_encode($messaging)), $sender);
+    if (isset($messaging['message']['quick_reply']['payload']) && $messaging['message']['quick_reply']['payload'] != 'null')
+      $responses = process_order($messaging['message']['quick_reply']['payload']);
+
+    // bot_answer(array('text'=>json_encode($messaging)),$sender);
     if (empty($responses))
       continue;
     foreach($responses as $resp)
