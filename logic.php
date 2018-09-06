@@ -142,7 +142,7 @@ function concat_payloadToResp($payload, $responses) {
 }
 
 function get_responses($payload) {
-  global $staticResp
+  global $staticResp;
   return $staticResp[$payload];
 }
 
