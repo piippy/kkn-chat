@@ -139,11 +139,19 @@ function concat_payloadToResp($payload, $responses) {
 
 function get_responses($payload) {
   global $init;
+  global $Meesuk;
+  global $shipping;
   global $resp;
   global $term;
 
   if ($payload == 'init')
     return $init;
+
+  if ($payload == 'Meesuk')
+    return $Meesuk;
+
+  if ($payload == 'shipping')
+    return $shipping;
 
   if (strlen($payload) == 2)
     return $resp[$payload];
